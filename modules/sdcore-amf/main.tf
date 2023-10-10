@@ -1,7 +1,3 @@
-resource "juju_model" "juju_model" {
-  name = var.model_name
-}
-
 resource "juju_application" "amf" {
   name = "amf"
   model = var.model_name
@@ -9,6 +5,7 @@ resource "juju_application" "amf" {
   charm {
     name = "sdcore-nrf"
     channel = var.channel
+    series = "jammy"
   }
 
   units = 1
@@ -22,6 +19,7 @@ resource "juju_application" "nrf" {
   charm {
     name = "sdcore-nrf"
     channel = var.channel
+    series = "jammy"
   }
 
   units = 1
