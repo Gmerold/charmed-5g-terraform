@@ -33,6 +33,7 @@ resource "juju_application" "mongodb" {
   charm {
     name = "mongodb-k8s"
     channel = "5/edge"
+    series = "jammy"
   }
 
   units = 1
