@@ -1,3 +1,7 @@
+resource "juju_model" "juju_model" {
+  name = var.model_name
+}
+
 module "nrf" {
   source = "./modules/sdcore-nrf"
 

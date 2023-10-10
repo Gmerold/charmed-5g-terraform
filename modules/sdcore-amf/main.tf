@@ -1,3 +1,7 @@
+resource "juju_model" "juju_model" {
+  name = var.model_name
+}
+
 resource "juju_application" "amf" {
   name = "amf"
   model = var.model_name
