@@ -1,3 +1,5 @@
+provider "juju" {}
+
 resource "juju_application" "nrf" {
   name = "nrf"
   model = var.model_name
