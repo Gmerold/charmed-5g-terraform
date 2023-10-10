@@ -1,4 +1,6 @@
-provider "juju" {}
+provider "juju" {
+  source = "juju/juju"
+}
 
 resource "juju_application" "nrf" {
   name = "nrf"

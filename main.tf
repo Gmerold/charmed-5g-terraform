@@ -1,4 +1,6 @@
-provider "juju" {}
+provider "juju" {
+  source = "juju/juju"
+}
 
 module "nrf" {
   source = "./modules/sdcore-nrf"
