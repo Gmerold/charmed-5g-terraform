@@ -1,7 +1,3 @@
-provider "juju" {
-  source = "juju/juju"
-}
-
 resource "juju_application" "amf" {
   name = "amf"
   model = var.model_name
