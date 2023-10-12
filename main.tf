@@ -5,14 +5,12 @@ resource "juju_model" "sdcore" {
 module "mongodb" {
   source = "./modules/terraform-juju-mongodb-k8s"
 
-  application_name = var.db_application_name
   model_name = juju_model.sdcore.name
 }
 
 module "certs-provider" {
   source = "./modules/terraform-juju-self-signed-certificates"
 
-  application_name = var.certs_application_name
   model_name = juju_model.sdcore.name
 }
 
@@ -21,8 +19,8 @@ module "nrf" {
 
   model_name = juju_model.sdcore.name
   channel = "edge"
-  db_application_name = var.db_application_name
-  certs_application_name = var.certs_application_name
+  db_application_name = module.mongodb.db_application_name
+  certs_application_name = module.certs-provider.certs_application_name
 }
 
 module "amf" {
@@ -30,7 +28,35 @@ module "amf" {
 
   model_name = juju_model.sdcore.name
   channel = "edge"
-  db_application_name = var.db_application_name
-  certs_application_name = var.certs_application_name
+  db_application_name = module.mongodb.db_application_name
+  certs_application_name = module.certs-provider.certs_application_name
   nrf_application_name = module.nrf.nrf_application_name
+}
+
+resource "juju_integration" "amf-certs" {
+  model = juju_model.sdcore.name
+
+  application {
+    name     = module.amf.amf_application_name
+    endpoint = "certificates"
+  }
+
+  application {
+    name     = module.certs-provider.certs_application_name
+    endpoint = "certificates"
+  }
+}
+
+resource "juju_integration" "nrf-certs" {
+  model = juju_model.sdcore.name
+
+  application {
+    name     = module.nrf.nrf_application_name
+    endpoint = "certificates"
+  }
+
+  application {
+    name     = module.certs-provider.certs_application_name
+    endpoint = "certificates"
+  }
 }

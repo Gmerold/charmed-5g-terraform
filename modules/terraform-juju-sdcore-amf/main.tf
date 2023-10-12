@@ -26,20 +26,6 @@ resource "juju_integration" "amf-db" {
   }
 }
 
-resource "juju_integration" "amf-certs" {
-  model = var.model_name
-
-  application {
-    name     = juju_application.amf.name
-    endpoint = "certificates"
-  }
-
-  application {
-    name     = var.certs_application_name
-    endpoint = "certificates"
-  }
-}
-
 resource "juju_integration" "amf-nrf" {
   model = var.model_name
 

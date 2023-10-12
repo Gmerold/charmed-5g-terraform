@@ -9,15 +9,3 @@ variable "channel" {
   type        = string
   default     = "stable"
 }
-
-variable "db_application_name" {
-  description = "Name of the application providing the `database` integration endpoint."
-  type        = string
-  default     = "mongodb"
-}
-
-variable "certs_application_name" {
-  description = "Name of the application providing the `certificates` integration endpoint."
-  type = string
-  default = "self-signed-certificates"
-}

@@ -1,5 +1,5 @@
 resource "juju_application" "mongodb" {
-  name = var.application_name
+  name = "mongodb"
   model = var.model_name
 
   charm {
