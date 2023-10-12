@@ -1,5 +1,5 @@
 resource "juju_application" "self-signed-certs" {
-  name = var.application_name
+  name = "self-signed-certificates"
   model = var.model_name
 
   charm {
