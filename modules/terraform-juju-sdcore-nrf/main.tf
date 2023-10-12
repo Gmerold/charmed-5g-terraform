@@ -25,3 +25,17 @@ resource "juju_integration" "nrf-db" {
     endpoint = "database"
   }
 }
+
+resource "juju_integration" "nrf-certs" {
+  model = var.model_name
+
+  application {
+    name     = juju_application.nrf.name
+    endpoint = "certificates"
+  }
+
+  application {
+    name     = var.certs_application_name
+    endpoint = "certificates"
+  }
+}

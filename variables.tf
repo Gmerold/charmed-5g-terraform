@@ -15,3 +15,9 @@ variable "db_application_name" {
   type        = string
   default     = "mongodb"
 }
+
+variable "certs_application_name" {
+  description = "Name of the application providing the `certificates` integration endpoint."
+  type = string
+  default = "self-signed-certificates"
+}

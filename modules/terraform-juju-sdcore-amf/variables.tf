@@ -16,6 +16,12 @@ variable "db_application_name" {
   default     = "mongodb-k8s"
 }
 
+variable "certs_application_name" {
+  description = "Name of the application providing the `certificates` integration endpoint."
+  type = string
+  default = "self-signed-certificates"
+}
+
 variable "nrf_application_name" {
   description = "The name of the application providing the `fiveg_nrf` endpoint."
   type        = string
