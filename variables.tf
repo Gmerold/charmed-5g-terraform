@@ -13,5 +13,5 @@ variable "channel" {
 variable "db_application_name" {
   description = "Name of the application providing the `database` integration endpoint."
   type        = string
-  default     = ""
+  default     = "mongodb"
 }

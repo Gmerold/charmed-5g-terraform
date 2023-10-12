@@ -12,21 +12,7 @@ resource "juju_application" "nrf" {
   trust = true
 }
 
-resource "juju_application" "mongodb" {
-  name = "mongodb"
-  model = var.model_name
-
-  charm {
-    name = "mongodb-k8s"
-    channel = "5/edge"
-    series = "jammy"
-  }
-
-  units = 1
-  trust = true
-}
-
-resource "juju_integration" "nrf-mongodb" {
+resource "juju_integration" "nrf-db" {
   model = var.model_name
 
   application {
@@ -35,7 +21,7 @@ resource "juju_integration" "nrf-mongodb" {
   }
 
   application {
-    name     = juju_application.mongodb.name
+    name     = var.db_application_name
     endpoint = "database"
   }
 }

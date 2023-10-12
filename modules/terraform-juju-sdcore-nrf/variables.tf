@@ -9,3 +9,9 @@ variable "channel" {
   type        = string
   default     = "stable"
 }
+
+variable "db_application_name" {
+  description = "The name of the application providing the `database` endpoint."
+  type        = string
+  default     = "mongodb-k8s"
+}
