@@ -32,4 +32,5 @@ module "amf" {
   channel = "edge"
   db_application_name = var.db_application_name
   certs_application_name = var.certs_application_name
+  nrf_application_name = module.nrf.nrf_application_name
 }

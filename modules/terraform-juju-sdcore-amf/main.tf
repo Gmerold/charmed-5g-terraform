@@ -40,16 +40,16 @@ resource "juju_integration" "amf-certs" {
   }
 }
 
-#resource "juju_integration" "amf-nrf" {
-#  model = var.model_name
-#
-#  application {
-#    name     = juju_application.amf.name
-#    endpoint = "fiveg-nrf"
-#  }
-#
-#  application {
-#    name     = var.nrf_application_name
-#    endpoint = "fiveg-nrf"
-#  }
-#}
+resource "juju_integration" "amf-nrf" {
+  model = var.model_name
+
+  application {
+    name     = juju_application.amf.name
+    endpoint = "fiveg-nrf"
+  }
+
+  application {
+    name     = var.nrf_application_name
+    endpoint = "fiveg-nrf"
+  }
+}
